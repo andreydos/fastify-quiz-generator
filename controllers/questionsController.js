@@ -2,15 +2,18 @@ const statuses = require('../statuses-enum');
 const data = require('../data');
 
 exports.getByCategoryAndNumberID = async (req) => {
-  const { categoryId } = req.params;
+  const { categoryId, questionId } = req.params;
   const category = data.questions[categoryId];
 
-  if (category && category[req.session.user.q]) {
+  if (category && category[questionId]) {
     const response = {
-      question: category[req.session.user.q].question,
-      options: category[req.session.user.q].options,
+      question: category[questionId].question,
+      options: category[questionId].options,
     };
     req.session.user.q += 1;
+
+    console.log('!!!USER: ');
+    console.log(req.session.user);
 
     return response;
   }

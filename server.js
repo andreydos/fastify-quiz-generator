@@ -36,13 +36,20 @@ fastify.register(require('fastify-cors'), {
 });
 
 fastify.register(fastifyCookie);
-fastify.register(fastifySession, { secret: 'generate_this_secret_key_and_store_it_secured_on_server' });
+fastify.register(fastifySession, {
+  secret: 'generate_this_secret_key_and_store_it_secured_on_server',
+  cookie: {
+    secure: false,
+  },
+});
 
 routes.forEach((route) => {
   fastify.route(route);
 });
 
 fastify.addHook('preHandler', async (request) => {
+  console.log('preHandler');
+  console.log(request.session.user);
   if (!request.session.user) {
     request.session.user = { name: `user${Math.random()}`, q: 0 };
   }
@@ -57,4 +64,5 @@ const start = async () => {
   }
 };
 
-start().then(() => {});
+start().then(() => {
+});
