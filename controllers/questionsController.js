@@ -10,10 +10,6 @@ exports.getByCategoryAndNumberID = async (req) => {
       question: category[questionId].question,
       options: category[questionId].options,
     };
-    req.session.user.q += 1;
-
-    console.log('!!!USER: ');
-    console.log(req.session.user);
 
     return response;
   }
