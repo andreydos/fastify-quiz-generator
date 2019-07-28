@@ -3,7 +3,7 @@ module.exports = {
   questions: {
     1: [
       {
-        question: '1. Smallest bird?',
+        question: '1) Smallest bird?',
         answer: { text: 'Hummingbird Bee', id: 2 },
         options: [{ text: 'Pardalote', id: 1 }, { text: 'Hummingbird Bee', id: 2 }, {
           text: 'Gerigón Piquicorto',
