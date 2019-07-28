@@ -4,6 +4,6 @@ ssh ubuntu@13.48.28.134 <<EOF
  git pull
  npm install
  forever stop server.js
- forever run server.js
+ forever start server.js
  exit
 EOF
